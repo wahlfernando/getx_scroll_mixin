@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get_scroll_mixin/models/user_model.dart';
 
 class UserRepository {
@@ -12,6 +13,8 @@ class UserRepository {
 
   Future<List<UserModel>> getUsers({required int page, required int limit}) async {
     try {
+      debugPrint('Buscando pagina $page');
+      await Future.delayed(const Duration(seconds: 2));
       final result = await _dio.get('/users', queryParameters: {
         'page': page,
         'limit': limit,
